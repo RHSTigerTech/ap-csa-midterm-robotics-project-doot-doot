@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * Creates a byte array for playing a .wav file from a directory.
+ * Will be called in the Hummingbird's playClip() method.
+ */
+
 public class PlaySound {
     public static byte[] sound(String soundFile) {
         return fileToByte(soundFile);
