@@ -10,6 +10,6 @@ public class DootDoot extends HummingbirdRobot {
         System.out.println("doot doot...this is the Skeleton Jukebox!");
         System.out.println("Pick a song to start!");
 
-        doot.playClip(PlaySound.sound("FILE"));
+        doot.playClip(PlaySound.sound("H:\\APCSA2018\\HummingbirdJava\\CommandLine\\MidtermProject\\Audio\\soundfile.wav"));
     }
 }
