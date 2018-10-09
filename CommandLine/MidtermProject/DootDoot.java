@@ -27,11 +27,13 @@ public class DootDoot extends HummingbirdRobot {
                 "5: Mii Channel Theme Sax Quartet\n" +
                 "6: Queen - Don't Stop Me Now Trombone Quartet\n" +
                 "7: Trumpet - I Want It That Way - Backstreet Boys\n" +
-                "8: Vitas - The 7th Element for Brass Quintet");
+                "8: Vitas - The 7th Element for Brass Quintet\n" +
+                "9: All Star for Trumpet, Tenor Sax, and Trombone");
+
         int songNumberInput = s.nextInt();
 
         //TODO: Wake me up inside
-        if (songNumberInput < 1) {
+        if (songNumberInput < 1 || songNumberInput > 9) {
             System.out.print("That's not the right output!");
             //TODO: Play a spooky audio clip here
         } else {
