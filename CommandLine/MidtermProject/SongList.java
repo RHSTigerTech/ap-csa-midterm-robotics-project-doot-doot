@@ -24,7 +24,7 @@ public class SongList {
                 "H:\\APCSA2018\\HummingbirdJava\\CommandLine\\MidtermProject\\Audio" + //8
                         "\\Vitas - The 7th Element for Brass Quintet.wav",
                 "H:\\APCSA2018\\HummingbirdJava\\CommandLine\\MidtermProject\\Audio" + //9
-                        "\\All Star for Trumpet, Tenor Sax, and Trombone.wav",
+                        "\\All Star for Trumpet, Tenor Sax, and Trombone.wav"
         };
 
         return songList[songNumber-1];

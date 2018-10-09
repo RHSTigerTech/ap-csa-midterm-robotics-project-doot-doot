@@ -12,6 +12,12 @@ public class DootDoot extends HummingbirdRobot {
         HummingbirdRobot doot = new HummingbirdRobot();
         Scanner s = new Scanner(System.in);
 
+        // ledID: 1 - Red (Right eye)
+        // RGBledID: 1 (Left eye)
+        doot.setLED(1, 255);
+        doot.setFullColorLED(2, 255, 0, 0);
+
+        System.out.println();
         System.out.println("doot doot...this is the Skeleton Jukebox!");
         System.out.println("Pick a song to start!");
         System.out.println("1: Test audio clip\n" +
@@ -25,17 +31,24 @@ public class DootDoot extends HummingbirdRobot {
         int songNumberInput = s.nextInt();
 
         //TODO: Wake me up inside
-        //TODO: Special Megalovania lights
-        if(songNumberInput < 1) {
+        if (songNumberInput < 1) {
             System.out.print("That's not the right output!");
             //TODO: Play a spooky audio clip here
         } else {
-            System.out.print("Now playing: " + SongList.getSong(songNumberInput));
+            doot.setServoPosition(1, 50);
+            if (songNumberInput == 4) {
+                //Special Megalovania lights
+                doot.setLED(1, 0);
+                doot.setFullColorLED(2, 0, 0, 255);
+            }
+            System.out.println("Now playing: " + SongList.getSong(songNumberInput));
             doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
             //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
             Thread.sleep(PlaySound.sound(SongList.getSong(songNumberInput)).length);
         }
 
+        doot.setLED(1, 0);
+        doot.setFullColorLED(2, 0, 0,0);
         doot.disconnect();
     }
 }
