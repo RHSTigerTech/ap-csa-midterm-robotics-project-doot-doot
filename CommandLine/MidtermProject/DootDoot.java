@@ -16,6 +16,7 @@ public class DootDoot extends HummingbirdRobot {
         // RGBledID: 1 (Left eye)
         doot.setLED(1, 255);
         doot.setFullColorLED(2, 255, 0, 0);
+        doot.setServoPosition(1, 0);
 
         System.out.println();
         System.out.println("doot doot...this is the Skeleton Jukebox!");
@@ -37,7 +38,7 @@ public class DootDoot extends HummingbirdRobot {
             System.out.print("That's not the right output!");
             //TODO: Play a spooky audio clip here
         } else {
-            doot.setServoPosition(1, 50);
+            doot.setServoPosition(1, 200);
             if (songNumberInput == 4) {
                 //Special Megalovania lights
                 doot.setLED(1, 0);
