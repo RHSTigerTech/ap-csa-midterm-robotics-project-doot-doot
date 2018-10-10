@@ -8,7 +8,6 @@ import java.io.IOException;
  * Creates a byte array for playing a .wav file from a directory.
  * Will be called in the Hummingbird's playClip() method.
  */
-
 public class PlaySound {
     public static byte[] sound(String soundFile) {
         return fileToByte(soundFile);
@@ -22,10 +21,10 @@ public class PlaySound {
         byte[] bytesArray = new byte[(int) input.length()];
         //This didn't work at first until it was in a try-catch
         try {
-            FileInputStream stream = new FileInputStream(input);
+            FileInputStream file = new FileInputStream(input);
             //FileInputStream.read() is, in fact, not ignored
-            stream.read(bytesArray); //Read file into bytes[]
-            stream.close();
+            file.read(bytesArray); //Read file into bytes[]
+            file.close();
         } catch (IOException e) {
             System.out.println("1");
             System.out.println(e);
