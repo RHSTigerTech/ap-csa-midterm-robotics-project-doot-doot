@@ -14,13 +14,19 @@ public class DootDoot extends HummingbirdRobot {
 
         // ledID: 1 - Red (Right eye)
         // RGBledID: 1 (Left eye)
-        doot.setLED(1, 255);
-        doot.setFullColorLED(2, 255, 0, 0);
-        doot.setServoPosition(1, 0);
+        doot.setLED(1, 200);
+        doot.setFullColorLED(2, 200, 0, 0);
+        doot.setServoPosition(1, 100);
 
+        //Starting sequence
         System.out.println();
-        System.out.println("doot doot...this is the Skeleton Jukebox!");
-        System.out.println("Pick a song to start!");
+        doot.speak("MY NAME IS MISTER COMPRESS");
+        Thread.sleep(3000);
+        doot.speak("WHAT IS YOUR NAME?");
+        System.out.println("What is your name?");
+        String userName = s.nextLine();
+        doot.speak("HELLO" + userName + "PICK A SONG TO START");
+
         System.out.println("1: Test audio clip\n" +
                 "2: Careless Whisper Romantic Instrumental\n" +
                 "3: Darude - Sandstorm for Brass Quintet\n" +
@@ -38,15 +44,21 @@ public class DootDoot extends HummingbirdRobot {
             System.out.print("That's not the right output!");
             //TODO: Play a spooky audio clip here
         } else {
-            doot.setServoPosition(1, 200);
             if (songNumberInput == 4) {
                 //Special Megalovania lights
                 doot.setLED(1, 0);
-                doot.setFullColorLED(2, 0, 0, 255);
+                doot.setFullColorLED(2, 0, 0, 200);
             }
             System.out.println("Now playing: " + SongList.getSong(songNumberInput));
             doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
+            System.out.println(SongList.getSong(songNumberInput).length());
             //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
+            //TODO: Make this loop work
+            for (int i = 0; i < SongList.getSong(songNumberInput).length(); i++) {
+                doot.setServoPosition(1, 50);
+                Thread.sleep(500);
+                doot.setServoPosition(1, 100);
+            }
             Thread.sleep(PlaySound.sound(SongList.getSong(songNumberInput)).length);
         }
 
