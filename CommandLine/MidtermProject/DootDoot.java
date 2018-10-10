@@ -7,7 +7,15 @@ import java.util.Scanner;
  * The main class of the package. Asks for a songNumber input from the
  * user and plays that corresponding song from SongList.java
  */
-public class DootDoot extends HummingbirdRobot {
+
+//        class Multi extends Thread{
+//        public void run(){
+//            doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
+//        }
+//
+//        }
+
+    public class DootDoot extends HummingbirdRobot {
     public static void main(String[] args) throws InterruptedException {
         HummingbirdRobot doot = new HummingbirdRobot();
         Scanner s = new Scanner(System.in);
@@ -41,7 +49,7 @@ public class DootDoot extends HummingbirdRobot {
 
         //TODO: Wake me up inside
         if (songNumberInput < 1 || songNumberInput > 9) {
-            System.out.print("That's not the right output!");
+            System.out.print("That's not the right input!");
             //TODO: Play a spooky audio clip here
         } else {
             if (songNumberInput == 4) {
@@ -50,7 +58,7 @@ public class DootDoot extends HummingbirdRobot {
                 doot.setFullColorLED(2, 0, 0, 200);
             }
             System.out.println("Now playing: " + SongList.getSong(songNumberInput));
-            doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
+            //doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
             System.out.println(SongList.getSong(songNumberInput).length());
             //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
             //TODO: Make this loop work
@@ -58,6 +66,7 @@ public class DootDoot extends HummingbirdRobot {
                 doot.setServoPosition(1, 50);
                 Thread.sleep(500);
                 doot.setServoPosition(1, 100);
+                Thread.sleep(500);
             }
             Thread.sleep(PlaySound.sound(SongList.getSong(songNumberInput)).length);
         }
