@@ -1,6 +1,8 @@
 package MidtermProject;
 
 import edu.cmu.ri.createlab.hummingbird.HummingbirdRobot;
+
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.Scanner;
 
 /**
@@ -21,6 +23,7 @@ public class DootDoot extends HummingbirdRobot {
         //Starting sequence
         System.out.println();
         doot.speak("MY NAME IS DOOT BOX");
+        System.out.println("MY NAME IS DOOT BOX");
         Thread.sleep(3000);
         doot.speak("WHAT IS YOUR NAME?");
         System.out.println("WHAT IS YOUR NAME?");
