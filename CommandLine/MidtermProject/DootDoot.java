@@ -53,18 +53,20 @@ public class DootDoot extends HummingbirdRobot {
             if (songNumberInput == 10) {
                 //Special WAKE ME UP INSIDE lights
                 doot.setLED(1, 255);
-                doot.setFullColorLED(2, 255,255,255);
+                doot.setFullColorLED(2, 255,0,0);
             }
+            //Play the song
             System.out.println("Now playing: " + SongList.getSong(songNumberInput));
             doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
             System.out.println(SongList.getSong(songNumberInput).length());
-            //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
+            //Uses the sensor to adjust the frequency of the servo moving
             for (int i = 0; i < SongList.getSong(songNumberInput).length(); i++) {
                 doot.setServoPosition(1, 150);
                 Thread.sleep(( -1 * doot.getSensorValue(1)) + 550);
                 doot.setServoPosition(1, 100);
                 Thread.sleep(( -1 * doot.getSensorValue(1)) + 550);
             }
+            //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
             Thread.sleep(PlaySound.sound(SongList.getSong(songNumberInput)).length);
         }
 
