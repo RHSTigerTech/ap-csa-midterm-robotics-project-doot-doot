@@ -28,12 +28,12 @@ import java.util.Scanner;
 
         //Starting sequence
         System.out.println();
-        doot.speak("MY NAME IS MISTER COMPRESS");
+        doot.speak("MY NAME IS DOOT BOX");
         Thread.sleep(3000);
         doot.speak("WHAT IS YOUR NAME?");
         System.out.println("What is your name?");
         String userName = s.nextLine();
-        doot.speak("HELLO" + userName + "PICK A SONG TO START");
+        doot.speak("HELLO" + userName + "PICK A SONG TO START... " + userName.toUpperCase());
 
         System.out.println("1: Test audio clip\n" +
                 "2: Careless Whisper Romantic Instrumental\n" +
@@ -43,25 +43,29 @@ import java.util.Scanner;
                 "6: Queen - Don't Stop Me Now Trombone Quartet\n" +
                 "7: Trumpet - I Want It That Way - Backstreet Boys\n" +
                 "8: Vitas - The 7th Element for Brass Quintet\n" +
-                "9: All Star for Trumpet, Tenor Sax, and Trombone");
+                "9: All Star for Trumpet, Tenor Sax, and Trombone\n" +
+                "10: WAKE ME UP INSIDE");
 
         int songNumberInput = s.nextInt();
 
-        //TODO: Wake me up inside
-        if (songNumberInput < 1 || songNumberInput > 9) {
+        if (songNumberInput < 1 || songNumberInput > 10) {
             System.out.print("That's not the right input!");
-            //TODO: Play a spooky audio clip here
+            doot.speak("THAT IS NOT A CORRECT INPUT");
         } else {
             if (songNumberInput == 4) {
                 //Special Megalovania lights
                 doot.setLED(1, 0);
                 doot.setFullColorLED(2, 0, 0, 200);
             }
+            if (songNumberInput == 10) {
+                //Special WAKE ME UP INSIDE lights
+                doot.setLED(1, 255);
+                doot.setFullColorLED(2, 255,255,255);
+            }
             System.out.println("Now playing: " + SongList.getSong(songNumberInput));
-            //doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
+            doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
             System.out.println(SongList.getSong(songNumberInput).length());
             //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
-            //TODO: Make this loop work
             for (int i = 0; i < SongList.getSong(songNumberInput).length(); i++) {
                 doot.setServoPosition(1, 50);
                 Thread.sleep(500);
