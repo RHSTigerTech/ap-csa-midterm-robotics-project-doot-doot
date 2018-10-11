@@ -14,8 +14,8 @@ public class DootDoot extends HummingbirdRobot {
 
         // ledID: 1 - Red (Right eye)
         // RGBledID: 1 (Left eye)
-        doot.setLED(1, 200);
-        doot.setFullColorLED(2, 200, 0, 0);
+        doot.setLED(1, 150);
+        doot.setFullColorLED(2, 150, 0, 0);
         doot.setServoPosition(1, 100);
 
         //Starting sequence
@@ -23,7 +23,7 @@ public class DootDoot extends HummingbirdRobot {
         doot.speak("MY NAME IS DOOT BOX");
         Thread.sleep(3000);
         doot.speak("WHAT IS YOUR NAME?");
-        System.out.println("What is your name?");
+        System.out.println("WHAT IS YOUR NAME?");
         String userName = s.nextLine();
         doot.speak("HELLO" + userName + "PICK A SONG TO START");
         System.out.println("HELLO " + userName.toUpperCase() + ", PICK A SONG TO START");
