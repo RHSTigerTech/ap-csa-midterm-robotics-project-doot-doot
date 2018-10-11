@@ -7,15 +7,7 @@ import java.util.Scanner;
  * The main class of the package. Asks for a songNumber input from the
  * user and plays that corresponding song from SongList.java
  */
-
-//        class Multi extends Thread{
-//        public void run(){
-//            doot.playClip(PlaySound.sound(SongList.getSong(songNumberInput)));
-//        }
-//
-//        }
-
-    public class DootDoot extends HummingbirdRobot {
+public class DootDoot extends HummingbirdRobot {
     public static void main(String[] args) throws InterruptedException {
         HummingbirdRobot doot = new HummingbirdRobot();
         Scanner s = new Scanner(System.in);
@@ -33,7 +25,8 @@ import java.util.Scanner;
         doot.speak("WHAT IS YOUR NAME?");
         System.out.println("What is your name?");
         String userName = s.nextLine();
-        doot.speak("HELLO" + userName + "PICK A SONG TO START... " + userName.toUpperCase());
+        doot.speak("HELLO" + userName + "PICK A SONG TO START");
+        System.out.println("HELLO " + userName.toUpperCase() + ", PICK A SONG TO START");
 
         System.out.println("1: Test audio clip\n" +
                 "2: Careless Whisper Romantic Instrumental\n" +
@@ -67,10 +60,10 @@ import java.util.Scanner;
             System.out.println(SongList.getSong(songNumberInput).length());
             //I assume each byte in the array takes a ms to process...so it'll Thread.sleep for that amount of bytes
             for (int i = 0; i < SongList.getSong(songNumberInput).length(); i++) {
-                doot.setServoPosition(1, 50);
-                Thread.sleep(500);
+                doot.setServoPosition(1, 150);
+                Thread.sleep(( -1 * doot.getSensorValue(1)) + 550);
                 doot.setServoPosition(1, 100);
-                Thread.sleep(500);
+                Thread.sleep(( -1 * doot.getSensorValue(1)) + 550);
             }
             Thread.sleep(PlaySound.sound(SongList.getSong(songNumberInput)).length);
         }
